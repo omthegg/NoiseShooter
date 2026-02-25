@@ -18,6 +18,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+	
 	if event is InputEventMouseMotion:
 		#var ratio:float = float(get_window().size.y) / float(get_window().size.x)
 		character.rotate_y(-event.relative.x * Settings.mouse_sens)

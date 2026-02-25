@@ -2,6 +2,8 @@ extends Node3D
 
 @export var noise_texture:NoiseTexture2D
 
+const chunk_dimension:int = 20
+
 var chunk_packed_scene:PackedScene = preload("res://source/chunk/chunk.tscn")
 
 var loaded_chunks:PackedVector3Array = []
@@ -10,9 +12,15 @@ var chunks_to_unload:PackedVector3Array = []
 
 var chunk_check_thread:Thread = Thread.new()
 
+var render_distance:int = 20
+
 
 func _physics_process(_delta: float) -> void:
 	var player:CharacterBody3D = get_parent().get_node("Player")
+	
+	var grid_player_position:Vector3 = player.global_position.snapped(Vector3(20.0, 20.0, 20.0))
+	if !(grid_player_position in loaded_chunks):
+		player.velocity = Vector3.ZERO
 	
 	if !chunk_check_thread.is_alive():
 		if chunk_check_thread.is_started():
@@ -21,8 +29,10 @@ func _physics_process(_delta: float) -> void:
 		chunk_check_thread.start(Callable(self, "update_lists").bind(player.global_position))
 	#update_lists(player.global_position)
 	
-	for chunk in chunks_to_load:
-		generate_chunk(chunk.x, chunk.z)
+	#for chunk in chunks_to_load:
+	#	generate_chunk(chunk.x, chunk.z)
+	if chunks_to_load.size() > 0:
+		generate_chunk(chunks_to_load[0].x, chunks_to_load[0].z)
 	
 	for chunk in chunks_to_unload:
 		chunks_to_unload.erase(chunk)
@@ -37,8 +47,12 @@ func _physics_process(_delta: float) -> void:
 func update_lists(player_position:Vector3) -> void:
 	var grid_player_position:Vector3 = player_position.snapped(Vector3(20.0, 20.0, 20.0))
 	
-	var chunks_range_x:Array = range(grid_player_position.x-100, grid_player_position.x+100, 20)
-	var chunks_range_z:Array = range(grid_player_position.z-100, grid_player_position.z+100, 20)
+	var r:int = render_distance * chunk_dimension
+	var chunks_range_x:Array = range(grid_player_position.x-r, 
+	grid_player_position.x+r, chunk_dimension)
+	
+	var chunks_range_z:Array = range(grid_player_position.z-r, 
+	grid_player_position.z+r, chunk_dimension)
 	
 	var chunks_to_keep:PackedVector3Array = []
 	

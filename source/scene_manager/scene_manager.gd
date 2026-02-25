@@ -12,3 +12,9 @@ func _input(event: InputEvent) -> void:
 			get_window().mode = Window.Mode.MODE_WINDOWED
 		else:
 			get_window().mode = Window.Mode.MODE_FULLSCREEN
+	
+	if event.is_action_pressed("pause"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
