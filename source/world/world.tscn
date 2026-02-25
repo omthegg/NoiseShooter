@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c1et4e46a2ifn"]
+
+[ext_resource type="Script" uid="uid://d2pukifcnhn1d" path="res://source/world/world.gd" id="1_66o58"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_66o58"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_66o58"]
+noise = SubResource("FastNoiseLite_66o58")
+
+[sub_resource type="Environment" id="Environment_ibvgw"]
+background_mode = 1
+background_color = Color(0.5455255, 0.7771947, 0.8151042, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 2
+
+[node name="World" type="Node3D" unique_id=803635652]
+script = ExtResource("1_66o58")
+noise_texture = SubResource("NoiseTexture2D_66o58")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=998246696]
+environment = SubResource("Environment_ibvgw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1998328305]
+transform = Transform3D(1, 0, 0, 0, 0.83845186, 0.5449757, 0, -0.5449757, 0.83845186, 0, 4.9128747, 10.745632)

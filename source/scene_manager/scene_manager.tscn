@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b6on1nuaiealc"]
+
+[ext_resource type="Script" uid="uid://cyq3002p3eftg" path="res://source/scene_manager/scene_manager.gd" id="1_ikhl4"]
+[ext_resource type="PackedScene" uid="uid://c1et4e46a2ifn" path="res://source/world/world.tscn" id="1_ivaf7"]
+[ext_resource type="PackedScene" uid="uid://bj2vfpyugb7mt" path="res://source/player/player.tscn" id="2_y51ae"]
+[ext_resource type="PackedScene" uid="uid://cfnrscvrx0ci1" path="res://source/debug_info/debug_info.tscn" id="4_7eoyu"]
+
+[node name="SceneManager" type="Node3D" unique_id=8461857]
+script = ExtResource("1_ikhl4")
+
+[node name="World" parent="." unique_id=803635652 instance=ExtResource("1_ivaf7")]
+
+[node name="Player" parent="." unique_id=1796999096 instance=ExtResource("2_y51ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7364793, 0)
+
+[node name="UI" type="Control" parent="." unique_id=981451238]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugInfo" parent="UI" unique_id=2108475731 instance=ExtResource("4_7eoyu")]
+layout_mode = 1
