@@ -1,3 +1,4 @@
+res://source/chunk/chunk.tscn
+res://source/chunk/chunk.gd
 res://source/world/world.tscn
 res://source/world/world.gd
-res://source/scene_manager/scene_manager.tscn

@@ -3,10 +3,18 @@ extends Node3D
 @onready var mesh_instance:MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $StaticBody3D/CollisionShape3D
 
-var default_plane:PlaneMesh = preload("res://source/chunk/default_plane.tres")
+#var default_plane:PlaneMesh = preload("res://source/chunk/default_plane.tres")
 var mdt := MeshDataTool.new()
 
+var dimension:int = 20
+
+
 func generate(noise:FastNoiseLite) -> void:
+	var default_plane:PlaneMesh = PlaneMesh.new()
+	default_plane.size = Vector2(dimension, dimension)
+	default_plane.subdivide_depth = dimension - 1
+	default_plane.subdivide_width = dimension - 1
+	
 	var array_mesh:ArrayMesh = ArrayMesh.new()
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, 
 	default_plane.surface_get_arrays(0))
@@ -14,20 +22,23 @@ func generate(noise:FastNoiseLite) -> void:
 	mdt.create_from_surface(array_mesh, 0)
 	
 	var heightmap_shape:HeightMapShape3D = HeightMapShape3D.new()
-	heightmap_shape.map_width = 21
-	heightmap_shape.map_depth = 21
+	heightmap_shape.map_width = dimension + 1
+	heightmap_shape.map_depth = dimension + 1
 	
+	var generated_heightmap_data:PackedFloat32Array = []
+	generated_heightmap_data.resize(heightmap_shape.map_data.size())
 	for i in range(mdt.get_vertex_count()):
-		var vertex := mdt.get_vertex(i)
+		var vertex:Vector3 = mdt.get_vertex(i)
 		vertex.y = noise.get_noise_2d(vertex.x + global_position.x, 
 		vertex.z + global_position.z) * 5.0
 		
 		mdt.set_vertex(i, vertex)
-		var heightmap_array_index := get_heightmap_array_index(int(vertex.x), 
-		int(vertex.z), 21)
+		var heightmap_array_index:int = get_heightmap_array_index(int(vertex.x), 
+		int(vertex.z), dimension + 1)
 		
-		heightmap_shape.map_data[heightmap_array_index] = vertex.y
+		generated_heightmap_data[heightmap_array_index] = vertex.y
 	
+	heightmap_shape.map_data = generated_heightmap_data
 	array_mesh.clear_surfaces()
 	mdt.commit_to_surface(array_mesh)
 	
@@ -35,5 +46,5 @@ func generate(noise:FastNoiseLite) -> void:
 	collision_shape.shape = heightmap_shape
 
 
-func get_heightmap_array_index(x:int, y:int, dimension:int) -> int:
-	return ((x+(dimension-1)/2) + dimension * (y+(dimension-1)/2))
+func get_heightmap_array_index(x:int, y:int, d:int) -> int:
+	return ((x+(d-1)/2) + d * (y+(d-1)/2))

@@ -14,7 +14,9 @@ noise = SubResource("FastNoiseLite_06lkf")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r12fr"]
 albedo_color = Color(0, 0.4427083, 0.06076391, 1)
 albedo_texture = SubResource("NoiseTexture2D_ibvgw")
-uv1_scale = Vector3(4, 4, 4)
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
 texture_filter = 2
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_r12fr"]

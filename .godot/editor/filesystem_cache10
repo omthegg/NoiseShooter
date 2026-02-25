@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772044617
+::res://::1772051361
 icon.svg::CompressedTexture2D::7296093063175563463::1772039642::1772039678::1::::<><><>0<>0<>b21125422f928214ea35af9e76293725<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://source/::1772039642
 ::res://source/character_controller/::1772040769
@@ -16,9 +16,9 @@ debug_info.tscn::PackedScene::5151686967838175306::1772039642::0::1::::<><><>0<>
 settings.gd::GDScript::1711735522032600529::1772039642::0::1::::<>Node<><>0<>0<><>::
 ::res://source/player/::1772039642
 player.tscn::PackedScene::3075143287454988051::1772039642::0::1::::<><><>0<>0<><>::uid://b1owjo0l1msv3::::res://source/character_controller/character_controller.tscn
-::res://source/scene_manager/::1772040736
+::res://source/scene_manager/::1772045508
 scene_manager.gd::GDScript::6492149734921604384::1772040736::0::1::::<>Node3D<><>0<>0<><>::
-scene_manager.tscn::PackedScene::4592012590286921624::1772040736::0::1::::<><><>0<>0<><>::uid://cyq3002p3eftg::::res://source/scene_manager/scene_manager.gd<>uid://c1et4e46a2ifn::::res://source/world/world.tscn<>uid://bj2vfpyugb7mt::::res://source/player/player.tscn<>uid://cfnrscvrx0ci1::::res://source/debug_info/debug_info.tscn
-::res://source/world/::1772039642
-world.gd::GDScript::9086559121430809907::1772039642::0::1::::<>Node3D<><>0<>0<><>::
-world.tscn::PackedScene::6607214480179385423::1772039642::0::1::::<><><>0<>0<><>::uid://d2pukifcnhn1d::::res://source/world/world.gd
+scene_manager.tscn::PackedScene::4592012590286921624::1772045508::0::1::::<><><>0<>0<><>::uid://cyq3002p3eftg::::res://source/scene_manager/scene_manager.gd<>uid://c1et4e46a2ifn::::res://source/world/world.tscn<>uid://bj2vfpyugb7mt::::res://source/player/player.tscn<>uid://cfnrscvrx0ci1::::res://source/debug_info/debug_info.tscn
+::res://source/world/::1772047164
+world.gd::GDScript::9086559121430809907::1772047164::0::1::::<>Node3D<><>0<>0<><>::
+world.tscn::PackedScene::6607214480179385423::1772047164::0::1::::<><><>0<>0<><>::uid://d2pukifcnhn1d::::res://source/world/world.gd
