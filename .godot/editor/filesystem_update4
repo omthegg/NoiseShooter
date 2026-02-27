@@ -1,7 +1,6 @@
-res://source/world/world.tscn
-res://source/world/world.gd
-res://source/ball/ball.tscn
-res://source/ball/ball.gd
 res://source/ball_shooter/ball_shooter.tscn
 res://source/ball_shooter/ball_shooter.gd
+res://source/character_controller/character_controller.tscn
+res://source/character_controller/character_controller.gd
 res://source/player/player.tscn
+res://source/ball/ball.tscn

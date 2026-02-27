@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var character:CharacterBody3D
+
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
 
@@ -7,13 +9,11 @@ const HEAD_HEIGHT:float = 0.8
 const CAM_TILT_ANGLE:float = 0.3
 const CAM_TILT_SPEED:float = 2.0
 
-var character:CharacterBody3D
 var speed:float = 10.0
 var jump_velocity:float = 4.5
 var input_dir:Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	character = get_parent()
 	head.position.y = HEAD_HEIGHT
 
 

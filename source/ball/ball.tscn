@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bh5cw1n8dvyee" path="res://source/ball/ball.gd" id="1_hx0lp"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hx0lp"]
+bounce = 1.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_827e3"]
 noise_type = 0
 frequency = 1.0
@@ -22,7 +25,8 @@ rings = 4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_827e3"]
 
-[node name="Ball" type="RigidBody3D" unique_id=2090312103]
+[node name="Ball" type="RigidBody3D" unique_id=2090312103 groups=["ball"]]
+physics_material_override = SubResource("PhysicsMaterial_hx0lp")
 script = ExtResource("1_hx0lp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1897435134]

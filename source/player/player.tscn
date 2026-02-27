@@ -8,12 +8,14 @@ height = 1.8
 
 [node name="Player" type="CharacterBody3D" unique_id=1796999096]
 
-[node name="CharacterController" parent="." unique_id=1786396887 instance=ExtResource("1_jct2x")]
+[node name="CharacterController" parent="." unique_id=1786396887 node_paths=PackedStringArray("character") instance=ExtResource("1_jct2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+character = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=388387536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_jct2x")
 
-[node name="BallShooter" parent="." unique_id=838061982 node_paths=PackedStringArray("character_controller") instance=ExtResource("2_xim07")]
+[node name="BallShooter" parent="." unique_id=838061982 node_paths=PackedStringArray("player", "character_controller") instance=ExtResource("2_xim07")]
+player = NodePath("..")
 character_controller = NodePath("../CharacterController")

@@ -24,6 +24,10 @@ Settings="*uid://yngbfi1hrlg8"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+ball=""
+
 [input]
 
 move_forward={
