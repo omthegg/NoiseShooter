@@ -1,13 +1,13 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772051361
+::res://::1772197583
 icon.svg::CompressedTexture2D::7296093063175563463::1772039642::1772039678::1::::<><><>0<>0<>b21125422f928214ea35af9e76293725<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://source/::1772039642
 ::res://source/character_controller/::1772040769
 character_controller.gd::GDScript::2628294044064499038::1772040769::0::1::::<>Node3D<><>0<>0<><>::
 character_controller.tscn::PackedScene::4241584527306826190::1772040769::0::1::::<><><>0<>0<><>::uid://bdpfvbpr68xms::::res://source/character_controller/character_controller.gd<>uid://db7jt7kyrusj4::::res://icon.svg
-::res://source/chunk/::1772039642
-chunk.gd::GDScript::4783785161226580980::1772039642::0::1::::<>Node3D<><>0<>0<><>::
-chunk.tscn::PackedScene::1171827594928438534::1772039642::0::1::::<><><>0<>0<><>::uid://cafkiisrtcvb5::::res://source/chunk/chunk.gd<>uid://b7k12yc7r17j2::::res://source/chunk/default_plane.tres
+::res://source/chunk/::1772057364
+chunk.gd::GDScript::4783785161226580980::1772057358::0::1::::<>Node3D<><>0<>0<><>::
+chunk.tscn::PackedScene::1171827594928438534::1772057364::0::1::::<><><>0<>0<><>::uid://cafkiisrtcvb5::::res://source/chunk/chunk.gd<>uid://b7k12yc7r17j2::::res://source/chunk/default_plane.tres
 default_plane.tres::PlaneMesh::4654735581025818157::1772039642::0::1::::<><><>0<>0<><>::
 ::res://source/debug_info/::1772039642
 debug_info.gd::GDScript::8922290791334144765::1772039642::0::1::::<>Control<><>0<>0<><>::
@@ -19,6 +19,6 @@ player.tscn::PackedScene::3075143287454988051::1772039642::0::1::::<><><>0<>0<><
 ::res://source/scene_manager/::1772045508
 scene_manager.gd::GDScript::6492149734921604384::1772040736::0::1::::<>Node3D<><>0<>0<><>::
 scene_manager.tscn::PackedScene::4592012590286921624::1772045508::0::1::::<><><>0<>0<><>::uid://cyq3002p3eftg::::res://source/scene_manager/scene_manager.gd<>uid://c1et4e46a2ifn::::res://source/world/world.tscn<>uid://bj2vfpyugb7mt::::res://source/player/player.tscn<>uid://cfnrscvrx0ci1::::res://source/debug_info/debug_info.tscn
-::res://source/world/::1772047164
-world.gd::GDScript::9086559121430809907::1772047164::0::1::::<>Node3D<><>0<>0<><>::
-world.tscn::PackedScene::6607214480179385423::1772047164::0::1::::<><><>0<>0<><>::uid://d2pukifcnhn1d::::res://source/world/world.gd
+::res://source/world/::1772190296
+world.gd::GDScript::9086559121430809907::1772108673::0::1::::<>Node3D<><>0<>0<><>::
+world.tscn::PackedScene::6607214480179385423::1772190296::0::1::::<><><>0<>0<><>::uid://d2pukifcnhn1d::::res://source/world/world.gd

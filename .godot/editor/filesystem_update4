@@ -1,4 +1,7 @@
-res://source/chunk/chunk.tscn
-res://source/chunk/chunk.gd
 res://source/world/world.tscn
 res://source/world/world.gd
+res://source/ball/ball.tscn
+res://source/ball/ball.gd
+res://source/ball_shooter/ball_shooter.tscn
+res://source/ball_shooter/ball_shooter.gd
+res://source/player/player.tscn

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4lwjrkph6tu5"]
+
+[ext_resource type="Script" uid="uid://b8fvsj5vdlxig" path="res://source/ball_shooter/ball_shooter.gd" id="1_6crjb"]
+
+[node name="BallShooter" type="Node3D" unique_id=838061982]
+script = ExtResource("1_6crjb")
