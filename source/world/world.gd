@@ -5,6 +5,7 @@ extends Node3D
 const chunk_dimension:int = 40
 
 var chunk_packed_scene:PackedScene = preload("res://source/chunk/chunk.tscn")
+var default_ground_material:StandardMaterial3D = preload("res://source/world/default_ground_material.tres")
 
 var loaded_chunks:PackedVector3Array = []
 var chunks_to_load:PackedVector3Array = []
@@ -13,6 +14,14 @@ var chunks_to_unload:PackedVector3Array = []
 var chunk_check_thread:Thread = Thread.new()
 
 var render_distance:int = 5
+
+var ground_material:StandardMaterial3D
+
+func _ready() -> void:
+	ground_material = default_ground_material.duplicate(true)
+	var ground_color:Color = Color.LAWN_GREEN
+	ground_color = Color8(randi_range(0, 255), randi_range(0, 255), randi_range(0, 255))
+	ground_material.albedo_color = ground_color
 
 
 func _physics_process(_delta: float) -> void:
@@ -90,6 +99,7 @@ func generate_chunk(x:float, z:float) -> void:
 	chunk.global_position = Vector3(x, 0.0, z)
 	chunk.name = str(chunk.global_position)
 	chunk.dimension = chunk_dimension
+	chunk.mesh_instance.material_override = ground_material
 	chunk.generate(noise_texture.noise)
 	
 	chunks_to_load.erase(Vector3(x, 0.0, z))

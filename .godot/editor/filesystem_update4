@@ -1,6 +1,4 @@
-res://source/ball_shooter/ball_shooter.tscn
-res://source/ball_shooter/ball_shooter.gd
-res://source/character_controller/character_controller.tscn
-res://source/character_controller/character_controller.gd
-res://source/player/player.tscn
-res://source/ball/ball.tscn
+res://source/chunk/chunk.tscn
+res://source/world/world.tscn
+res://source/world/default_ground_material.tres
+res://source/world/world.gd
