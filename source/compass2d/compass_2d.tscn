@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d06nkbh05uxqi"]
+
+[ext_resource type="Script" uid="uid://bcuynj1bygixh" path="res://source/compass2d/compass_2d.gd" id="1_odptn"]
+[ext_resource type="Texture2D" uid="uid://e23aoc6l0u8i" path="res://textures/compass.png" id="1_pmlgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odptn"]
+atlas = ExtResource("1_pmlgd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmlgd"]
+atlas = ExtResource("1_pmlgd")
+region = Rect2(64, 0, 64, 64)
+
+[node name="Compass2D" type="Node2D" unique_id=2121278595]
+script = ExtResource("1_odptn")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=260026665]
+modulate = Color(0.9036458, 0.9036458, 0.9036458, 1)
+texture = SubResource("AtlasTexture_odptn")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=889923627]
+modulate = Color(0.7994792, 0, 0, 1)
+texture = SubResource("AtlasTexture_pmlgd")

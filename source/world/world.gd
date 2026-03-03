@@ -17,11 +17,23 @@ var render_distance:int = 5
 
 var ground_material:StandardMaterial3D
 
+var portal_packed_scene:PackedScene = preload("res://source/portal/portal.tscn")
+
 func _ready() -> void:
 	ground_material = default_ground_material.duplicate(true)
 	var ground_color:Color = Color.LAWN_GREEN
 	ground_color = Color8(randi_range(0, 255), randi_range(0, 255), randi_range(0, 255))
 	ground_material.albedo_color = ground_color
+	
+	$WorldEnvironment.environment.background_color = Color8(randi_range(0, 255), randi_range(0, 255), randi_range(0, 255))
+	
+	var portal = portal_packed_scene.instantiate()
+	add_child(portal)
+	portal.global_position = Vector3(randi_range(-40, 40), 
+	200.0, randi_range(-40, 40))
+	
+	await get_tree().process_frame
+	get_node("/root/SceneManager").portal = portal
 
 
 func _physics_process(_delta: float) -> void:

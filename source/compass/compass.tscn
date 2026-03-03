@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://rc38cd43u0d3"]
+
+[ext_resource type="Script" uid="uid://bt6s1xf6jblsv" path="res://source/compass/compass.gd" id="1_3taa6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3taa6"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dj3cw"]
+width = 32
+height = 32
+noise = SubResource("FastNoiseLite_3taa6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1goyb"]
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_dj3cw")
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1goyb"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+radial_segments = 6
+rings = 0
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3taa6"]
+top_radius = 0.25
+bottom_radius = 0.0
+height = 0.5
+radial_segments = 6
+rings = 0
+
+[node name="Compass" type="Node3D" unique_id=1650545732]
+script = ExtResource("1_3taa6")
+
+[node name="Model" type="Node3D" parent="." unique_id=185408831]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" unique_id=1662062955]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+layers = 2
+material_override = SubResource("StandardMaterial3D_1goyb")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_1goyb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" unique_id=1586955935]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.7)
+layers = 2
+material_override = SubResource("StandardMaterial3D_1goyb")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_3taa6")

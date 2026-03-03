@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c1et4e46a2ifn" path="res://source/world/world.tscn" id="1_ivaf7"]
 [ext_resource type="PackedScene" uid="uid://bj2vfpyugb7mt" path="res://source/player/player.tscn" id="2_y51ae"]
 [ext_resource type="PackedScene" uid="uid://cfnrscvrx0ci1" path="res://source/debug_info/debug_info.tscn" id="4_7eoyu"]
+[ext_resource type="PackedScene" uid="uid://rc38cd43u0d3" path="res://source/compass/compass.tscn" id="5_2r2ke"]
+[ext_resource type="PackedScene" uid="uid://d06nkbh05uxqi" path="res://source/compass2d/compass_2d.tscn" id="6_nyf36"]
 
 [node name="SceneManager" type="Node3D" unique_id=8461857]
 script = ExtResource("1_ikhl4")
@@ -23,3 +25,33 @@ grow_vertical = 2
 
 [node name="DebugInfo" parent="UI" unique_id=2108475731 instance=ExtResource("4_7eoyu")]
 layout_mode = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI" unique_id=1789169909]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3888889
+anchor_top = 0.69135803
+anchor_right = 0.6114445
+anchor_bottom = 1.0863581
+offset_right = -0.38397217
+offset_bottom = 0.039993286
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer" unique_id=122792485]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 0
+
+[node name="Compass" parent="UI/SubViewportContainer/SubViewport" unique_id=1650545732 instance=ExtResource("5_2r2ke")]
+
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer/SubViewport/Compass" unique_id=396473317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+cull_mask = 2
+projection = 1
+fov = 80.0
+size = 3.0
+
+[node name="Compass2D" parent="UI" unique_id=2121278595 instance=ExtResource("6_nyf36")]
+position = Vector2(576, 576)

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dnqxaaagm2sax"]
+
+[ext_resource type="Shader" uid="uid://de6vjo4aege36" path="res://source/portal/portal.gdshader" id="1_g5jbf"]
+[ext_resource type="Script" uid="uid://gdr2m8jtiigc" path="res://source/portal/portal.gd" id="1_tsup7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g5jbf"]
+noise_type = 0
+frequency = 0.1114
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g5jbf"]
+width = 32
+height = 32
+noise = SubResource("FastNoiseLite_g5jbf")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsup7"]
+render_priority = 0
+shader = ExtResource("1_g5jbf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_g5jbf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_na5tv"]
+size = Vector2(4, 4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g5jbf"]
+radius = 2.0
+
+[node name="Portal" type="Node3D" unique_id=2040493500]
+script = ExtResource("1_tsup7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1700824552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("ShaderMaterial_tsup7")
+mesh = SubResource("QuadMesh_na5tv")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=424307401]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=795777785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("SphereShape3D_g5jbf")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1233915653]
+target_position = Vector3(0, -300, 0)
