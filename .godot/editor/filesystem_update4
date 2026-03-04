@@ -1,13 +1,6 @@
 res://source/portal/portal.tscn
 res://source/world/default_ground_material.tres
-res://source/portal/portal.gdshader
-res://source/portal/portal.gd
-res://source/globals/global.gd
-res://source/scene_manager/scene_manager.tscn
-res://source/scene_manager/scene_manager.gd
-res://source/world/world.tscn
-res://source/world/world.gd
-res://source/player/player.tscn
-res://source/portal/portal_standard_material.tres
-res://source/portal/portal_shader_material.tres
 res://source/portal/portal_shader_material2.tres
+res://source/portal/portal.gd
+res://source/world/world.tscn
+res://source/scene_manager/scene_manager.tscn

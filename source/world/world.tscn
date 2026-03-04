@@ -16,7 +16,6 @@ background_color = Color(0.5455255, 0.7771947, 0.8151042, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 1.5
-tonemap_mode = 2
 
 [node name="World" type="Node3D" unique_id=803635652]
 script = ExtResource("1_66o58")

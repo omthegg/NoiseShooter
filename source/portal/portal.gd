@@ -22,18 +22,22 @@ func _physics_process(_delta: float) -> void:
 		global_position = raycast.get_collision_point()
 		snapped_to_floor = true
 	
-	# See Sebastian Lague's "Coding Adventure: Portals"
-	var main_cam:Camera3D = Global.player_camera
-	if other_portal and main_cam:
-		other_portal.camera.global_transform = other_portal.global_transform * global_transform.affine_inverse() * main_cam.global_transform
-	
 	if touching_player:
 		var normal:Vector3 = surface.global_basis.z
 		var dot:float = normal.dot(Global.player.global_position)
 		if sign(dot) != previous_dot_sign:
 			Global.player.global_transform = other_portal.global_transform * global_transform.affine_inverse() * Global.player.global_transform
+			touching_player = false
 		
 		previous_dot_sign = sign(dot)
+
+
+func _process(_delta: float) -> void:
+	# See Sebastian Lague's "Coding Adventure: Portals"
+	var main_cam:Camera3D = Global.player_camera
+	if other_portal and main_cam:
+		other_portal.camera.global_transform = other_portal.global_transform * global_transform.affine_inverse() * main_cam.global_transform
+	
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
