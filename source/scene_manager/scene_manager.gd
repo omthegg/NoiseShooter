@@ -9,6 +9,8 @@ var portal:Node3D
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.player = player
+	Global.player_camera = player.get_node("CharacterController/Head/Camera3D")
 
 
 func _input(event: InputEvent) -> void:

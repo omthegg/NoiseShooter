@@ -7,13 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://rc38cd43u0d3" path="res://source/compass/compass.tscn" id="5_2r2ke"]
 [ext_resource type="PackedScene" uid="uid://d06nkbh05uxqi" path="res://source/compass2d/compass_2d.tscn" id="6_nyf36"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nyf36"]
+resource_local_to_scene = true
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_077nh"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_nyf36")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyf36"]
+albedo_color = Color(0, 0.2109375, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_077nh"]
+albedo_color = Color(0, 0.13741049, 0.7994792, 1)
+
 [node name="SceneManager" type="Node3D" unique_id=8461857]
 script = ExtResource("1_ikhl4")
 
 [node name="World" parent="." unique_id=803635652 instance=ExtResource("1_ivaf7")]
+noise_texture = SubResource("NoiseTexture2D_077nh")
 
 [node name="Player" parent="." unique_id=1796999096 instance=ExtResource("2_y51ae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.5, 0)
 
 [node name="UI" type="Control" parent="." unique_id=981451238]
 layout_mode = 3
@@ -55,3 +70,15 @@ size = 3.0
 
 [node name="Compass2D" parent="UI" unique_id=2121278595 instance=ExtResource("6_nyf36")]
 position = Vector2(576, 576)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=337755081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 40, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_nyf36")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2082094304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 40, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_077nh")

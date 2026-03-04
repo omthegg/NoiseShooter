@@ -1,12 +1,13 @@
+CSGBox3D
+MeshInstance3D
+SubViewport
+Camera3D
+Node3D
 Sprite2D
 Label
 RayCast3D
-Camera3D
-SubViewport
 SubViewportContainer
 Control
-Node3D
-MeshInstance3D
 CollisionShape3D
 Area3D
 RigidBody3D

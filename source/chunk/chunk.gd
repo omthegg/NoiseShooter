@@ -29,8 +29,8 @@ func generate(noise:FastNoiseLite) -> void:
 	generated_heightmap_data.resize(heightmap_shape.map_data.size())
 	for i in range(mdt.get_vertex_count()):
 		var vertex:Vector3 = mdt.get_vertex(i)
-		vertex.y = noise.get_noise_2d(vertex.x + global_position.x, 
-		vertex.z + global_position.z) * 5.0
+		vertex.y = noise.get_noise_2d(vertex.x + position.x, 
+		vertex.z + position.z) * 5.0
 		
 		mdt.set_vertex(i, vertex)
 		var heightmap_array_index:int = get_heightmap_array_index(int(vertex.x), 

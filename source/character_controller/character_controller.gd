@@ -5,7 +5,7 @@ extends Node3D
 @onready var head:Node3D = $Head
 @onready var camera:Camera3D = $Head/Camera3D
 
-const HEAD_HEIGHT:float = 0.8
+const HEAD_HEIGHT:float = 1.7
 const CAM_TILT_ANGLE:float = 0.3
 const CAM_TILT_SPEED:float = 2.0
 

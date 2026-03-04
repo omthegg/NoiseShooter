@@ -4,16 +4,16 @@ extends Node2D
 @onready var arrow:Sprite2D = $Arrow
 
 var portal:Node3D
-var player:CharacterBody3D
 
 func _physics_process(_delta: float) -> void:
-	if !portal or !player:
+	if !portal:
 		var scene_manager:Node3D = get_node_or_null("/root/SceneManager")
 		if scene_manager:
 			portal = scene_manager.portal
-			player = scene_manager.player
 		
 		return
+	
+	var player:CharacterBody3D = Global.player
 	
 	var portal_pos_flat:Vector2 = Vector2(portal.global_position.x, portal.global_position.z)
 	var player_pos_flat:Vector2 = Vector2(player.global_position.x, player.global_position.z)

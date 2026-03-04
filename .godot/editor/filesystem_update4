@@ -1,9 +1,10 @@
-res://source/compass/compass.tscn
+res://source/portal/portal.tscn
 res://source/world/default_ground_material.tres
 res://source/portal/portal.gdshader
-res://source/compass2d/compass_2d.tscn
+res://source/portal/portal.gd
+res://source/globals/global.gd
 res://source/scene_manager/scene_manager.tscn
-res://source/world/world.gd
 res://source/scene_manager/scene_manager.gd
-res://source/compass2d/compass_2d.gd
-res://source/compass/compass.gd
+res://source/world/world.tscn
+res://source/world/world.gd
+res://source/player/player.tscn

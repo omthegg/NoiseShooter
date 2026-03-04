@@ -6,10 +6,17 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jct2x"]
 height = 1.8
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xim07"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xim07"]
+height = 1.8
+radial_segments = 8
+rings = 4
+
 [node name="Player" type="CharacterBody3D" unique_id=1796999096]
+floor_constant_speed = true
 
 [node name="CharacterController" parent="." unique_id=1786396887 node_paths=PackedStringArray("character") instance=ExtResource("1_jct2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 character = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=388387536]
@@ -19,3 +26,8 @@ shape = SubResource("CapsuleShape3D_jct2x")
 [node name="BallShooter" parent="." unique_id=838061982 node_paths=PackedStringArray("player", "character_controller") instance=ExtResource("2_xim07")]
 player = NodePath("..")
 character_controller = NodePath("../CharacterController")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1588743153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_xim07")
+mesh = SubResource("CapsuleMesh_xim07")
