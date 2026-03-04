@@ -13,7 +13,7 @@ height = 1.8
 radial_segments = 8
 rings = 4
 
-[node name="Player" type="CharacterBody3D" unique_id=1796999096]
+[node name="Player" type="CharacterBody3D" unique_id=1796999096 groups=["player"]]
 floor_constant_speed = true
 
 [node name="CharacterController" parent="." unique_id=1786396887 node_paths=PackedStringArray("character") instance=ExtResource("1_jct2x")]

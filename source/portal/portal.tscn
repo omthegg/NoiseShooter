@@ -34,6 +34,9 @@ height = 0.4
 radial_segments = 8
 rings = 4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6j80"]
+size = Vector3(2, 4, 0.6)
+
 [node name="Portal" type="Node3D" unique_id=2040493500]
 script = ExtResource("1_tsup7")
 
@@ -62,5 +65,15 @@ cull_mask = 1048571
 fov = 80.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Camera3D" unique_id=316543306]
+visible = false
 material_override = SubResource("StandardMaterial3D_n6j80")
 mesh = SubResource("SphereMesh_tsup7")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=157359432]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=905509479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_n6j80")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

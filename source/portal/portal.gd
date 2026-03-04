@@ -12,6 +12,9 @@ extends Node3D
 
 var snapped_to_floor:bool = false
 
+var touching_player:bool = false
+var previous_dot_sign:int
+
 func _physics_process(_delta: float) -> void:
 	#var player:CharacterBody3D = Global.player
 	
@@ -22,12 +25,25 @@ func _physics_process(_delta: float) -> void:
 	# See Sebastian Lague's "Coding Adventure: Portals"
 	var main_cam:Camera3D = Global.player_camera
 	if other_portal and main_cam:
-		#var dif:Vector3 = global_position - main_cam.global_position
-		#other_portal.camera.position = to_local(main_cam.global_position)
-		#other_portal.camera.global_position += other_portal.global_position
-		other_portal.camera.transform = other_portal.global_transform * global_transform.affine_inverse() * main_cam.global_transform
-		#other_portal.camera.position.x = dif.x * cos(other_portal.rotation.x)
-		#other_portal.camera.position.z = dif.z * sin(other_portal.rotation.z)
-	#camera.global_position = global_position + Vector3(0.0, 1.7/2, 0.0)
-	#camera.global_rotation = get_tree().root.get_camera_3d().global_rotation
-	#camera.rotation_degrees.x -= 90.0
+		other_portal.camera.global_transform = other_portal.global_transform * global_transform.affine_inverse() * main_cam.global_transform
+	
+	if touching_player:
+		var normal:Vector3 = surface.global_basis.z
+		var dot:float = normal.dot(Global.player.global_position)
+		if sign(dot) != previous_dot_sign:
+			Global.player.global_transform = other_portal.global_transform * global_transform.affine_inverse() * Global.player.global_transform
+		
+		previous_dot_sign = sign(dot)
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		touching_player = true
+		var normal:Vector3 = surface.global_basis.z
+		var dot:float = normal.dot(Global.player.global_position)
+		previous_dot_sign = sign(dot)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		touching_player = false
