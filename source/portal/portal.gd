@@ -3,7 +3,7 @@ extends Node3D
 @export var other_portal:Node3D:
 	set(value):
 		other_portal = value
-		surface.material_override.albedo_texture.viewport_path = other_portal.sub_viewport.get_path()
+		surface.material_override.get_shader_parameter("texture_albedo").viewport_path = other_portal.sub_viewport.get_path()
 
 @onready var raycast:RayCast3D = $RayCast3D
 @onready var camera:Camera3D = $SubViewport/Camera3D

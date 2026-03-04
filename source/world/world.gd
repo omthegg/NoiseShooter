@@ -40,11 +40,10 @@ func _ready() -> void:
 	portal2.position = portal.position + Vector3(4.0, 0.0, 0.0)
 	portal2.rotation_degrees.y += 180
 	
-	portal.other_portal = portal2
-	portal2.other_portal = portal
-	
 	await get_tree().process_frame
 	get_node("/root/SceneManager").portal = portal
+	portal.other_portal = portal2
+	portal2.other_portal = portal
 
 
 func _physics_process(_delta: float) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://de6vjo4aege36" path="res://source/portal/portal.gdshader" id="1_g5jbf"]
 [ext_resource type="Script" uid="uid://gdr2m8jtiigc" path="res://source/portal/portal.gd" id="1_tsup7"]
+[ext_resource type="Material" uid="uid://cbnxch2gqtkbi" path="res://source/portal/portal_shader_material2.tres" id="3_n6j80"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g5jbf"]
 noise_type = 0
@@ -20,15 +21,6 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g5jbf")
 
 [sub_resource type="QuadMesh" id="QuadMesh_na5tv"]
 size = Vector2(2, 2)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_tsup7"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsup7"]
-resource_local_to_scene = true
-cull_mode = 2
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_tsup7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_tsup7"]
 size = Vector2(2, 4)
@@ -56,14 +48,17 @@ target_position = Vector3(0, -300, 0)
 
 [node name="Surface" type="MeshInstance3D" parent="." unique_id=1196137901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("StandardMaterial3D_tsup7")
+layers = 4
+material_override = ExtResource("3_n6j80")
+cast_shadow = 0
 mesh = SubResource("QuadMesh_tsup7")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1189811496]
-size = Vector2i(512, 1024)
+size = Vector2i(1152, 648)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1261731540]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.75, 0)
+cull_mask = 1048571
 fov = 80.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Camera3D" unique_id=316543306]
