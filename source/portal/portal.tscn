@@ -37,6 +37,17 @@ rings = 4
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6j80"]
 size = Vector3(2, 4, 0.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgcgp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n136y"]
+size = Vector3(0.2, 4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n6j80"]
+size = Vector3(2.4, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5nvtv"]
+size = Vector3(2, 4, 0.2)
+
 [node name="Portal" type="Node3D" unique_id=2040493500]
 script = ExtResource("1_tsup7")
 
@@ -51,6 +62,22 @@ target_position = Vector3(0, -300, 0)
 
 [node name="Surface" type="MeshInstance3D" parent="." unique_id=1196137901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+layers = 4
+material_override = ExtResource("3_n6j80")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tsup7")
+
+[node name="Surface2" type="MeshInstance3D" parent="." unique_id=2105753659]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2, -0.2)
+visible = false
+layers = 4
+material_override = ExtResource("3_n6j80")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tsup7")
+
+[node name="Surface3" type="MeshInstance3D" parent="." unique_id=713209972]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0.2)
+visible = false
 layers = 4
 material_override = ExtResource("3_n6j80")
 cast_shadow = 0
@@ -74,6 +101,29 @@ mesh = SubResource("SphereMesh_tsup7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=905509479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_n6j80")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1164597661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 2, 0)
+material_override = SubResource("StandardMaterial3D_mgcgp")
+mesh = SubResource("BoxMesh_n136y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1467329982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, 0)
+material_override = SubResource("StandardMaterial3D_mgcgp")
+mesh = SubResource("BoxMesh_n6j80")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=506119330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 2, 0)
+material_override = SubResource("StandardMaterial3D_mgcgp")
+mesh = SubResource("BoxMesh_n136y")
+
+[node name="SurfaceBox" type="MeshInstance3D" parent="." unique_id=1339329082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+layers = 4
+material_override = ExtResource("3_n6j80")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_5nvtv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

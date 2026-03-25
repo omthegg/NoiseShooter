@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0rpso7jebrnl"]
+
+[ext_resource type="Shader" uid="uid://rmc152mhtxll" path="res://source/tree/tree_trunk.gdshader" id="1_jowpy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvecd"]
+render_priority = 0
+shader = ExtResource("1_jowpy")
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aoq7r"]
+radial_segments = 6
+rings = 2
+
+[node name="Tree" type="Node3D" unique_id=2039435719]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=274941509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_pvecd")
+mesh = SubResource("CylinderMesh_aoq7r")

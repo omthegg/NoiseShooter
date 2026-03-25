@@ -2,7 +2,7 @@ extends Node3D
 
 @export var noise_texture:NoiseTexture2D
 
-const chunk_dimension:int = 40
+const chunk_dimension:int = 60
 
 var chunk_packed_scene:PackedScene = preload("res://source/chunk/chunk.tscn")
 var default_ground_material:StandardMaterial3D = preload("res://source/world/default_ground_material.tres")
@@ -13,7 +13,7 @@ var chunks_to_unload:PackedVector3Array = []
 
 var chunk_check_thread:Thread = Thread.new()
 
-var render_distance:int = 5
+var render_distance:int = 4
 
 var ground_material:StandardMaterial3D
 

@@ -12,9 +12,13 @@ extends Node3D
 
 var snapped_to_floor:bool = false
 
-var touching_player:bool = false
+var travellers:Dictionary = {}
+
 var previous_dot_sign:int
 
+
+# TODO: Make it so the player either gets sucked in or pushed away when too
+# close to the surface of the portal, so it doesn't clip into the camera
 func _physics_process(_delta: float) -> void:
 	#var player:CharacterBody3D = Global.player
 	
@@ -22,14 +26,15 @@ func _physics_process(_delta: float) -> void:
 		global_position = raycast.get_collision_point()
 		snapped_to_floor = true
 	
-	if touching_player:
+	for traveller in travellers:
 		var normal:Vector3 = surface.global_basis.z
-		var dot:float = normal.dot(Global.player.global_position)
-		if sign(dot) != previous_dot_sign:
-			Global.player.global_transform = other_portal.global_transform * global_transform.affine_inverse() * Global.player.global_transform
-			touching_player = false
-		
-		previous_dot_sign = sign(dot)
+		var dot:float = normal.dot(traveller.global_position)
+		if sign(dot) != travellers[traveller]:
+			traveller.global_transform = other_portal.global_transform * global_transform.affine_inverse() * traveller.global_transform
+			if traveller is CharacterBody3D:
+				traveller.velocity = other_portal.global_transform * global_transform.affine_inverse() * traveller.velocity
+			elif traveller is RigidBody3D:
+				traveller.linear_velocity = other_portal.global_transform * global_transform.affine_inverse() * traveller.linear_velocity
 
 
 func _process(_delta: float) -> void:
@@ -37,17 +42,13 @@ func _process(_delta: float) -> void:
 	var main_cam:Camera3D = Global.player_camera
 	if other_portal and main_cam:
 		other_portal.camera.global_transform = other_portal.global_transform * global_transform.affine_inverse() * main_cam.global_transform
-	
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		touching_player = true
-		var normal:Vector3 = surface.global_basis.z
-		var dot:float = normal.dot(Global.player.global_position)
-		previous_dot_sign = sign(dot)
+	var normal:Vector3 = surface.global_basis.z
+	var dot:float = normal.dot(Global.player.global_position)
+	travellers[body] = sign(dot)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		touching_player = false
+	travellers.erase(body)
